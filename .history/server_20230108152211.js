@@ -1,0 +1,28 @@
+const cors = require('cors')
+const express = require('express')
+const app = express()
+const port = 5000;
+
+//Api
+const fetch = require('fetch')
+
+app.use(cors())
+
+app.get('/', (req, res) => {
+    res.send('testando com fetch agora ')
+})
+
+ 
+app.get('/departamentos', (req, res) =>  {
+
+    res.send('departamentos ')
+})
+
+
+app.listen(port, () => {
+    console.log(`Executando na porta ${port}`) 
+})
+
+
+
+

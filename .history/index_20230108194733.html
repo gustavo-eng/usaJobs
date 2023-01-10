@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>FrontEnd</title>
+</head> 
+<body>
+    <h2>Ola com fetch</h2>
+    <p>Logo a baixo vai uma lista com as aagencias e departamentos do governo dos 
+        dos Estados Unidos:  
+    </p>
+    <div>
+
+    </div>
+    <script>
+        const div =  document.querySelector('div');
+        const paragrafo = document.createElement("p");
+        paragrafo.innerText = 'fdaf';
+        document.body.appendChild(paragrafo);
+        
+        // const job = new Array() 
+        const job = []  
+        let output = ''
+        fetch('https://data.usajobs.gov/api/codelist/agencysubelements')
+            .then(res => {
+                return res.json()
+            })
+            .then((dados) =>  {
+                job.push(dados.CodeList[0].ValidValue)                 
+                job.forEach((elemento,index) => { 
+                    elemento.forEach((el, index) => {
+                        if (index === 10) return
+                        console.log(el.Value)
+                        output += `<li>${el.Value}</li>`
+                        div.innerHTML = output  
+                    }) 
+                })        
+                console.log(dados.CodeList[0].ValidValue[1].Value) // string do departamento ou agencia 
+                return dados.CodeList[0].ValidValue
+            })
+    
+        
+
+    </script>
+</body>
+</html>
