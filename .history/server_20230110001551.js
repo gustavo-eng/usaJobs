@@ -11,7 +11,6 @@ app.use(cors())
 app.get('/', async (req, res) => {  
     const response = await  axios('https://jsonplaceholder.typicode.com/users') 
     console.log(response.data)       
-    console.log('poderia ser desestruturado com  const  {data} = await axios')
     return res.json(response.data) 
 })  
 
